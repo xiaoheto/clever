@@ -11,6 +11,9 @@ def get_clever_lean_project_path() -> str:
     Returns the path to the Clever Lean project directory.
     This function assumes that the script is run from the root directory of the project.
     """
+    env_path = os.environ.get("CLEVER_LEAN_PROJECT_PATH")
+    if env_path:
+        return env_path
     in_pkg_path = os.path.join(os.path.dirname(__file__), "lean4")
     if os.path.exists(in_pkg_path):
         return in_pkg_path
